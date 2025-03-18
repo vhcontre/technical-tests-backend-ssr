@@ -191,25 +191,25 @@ Tecnología/Patrón
 
 **.NET 6+**
 
-Mejor rendimiento y compatibilidad.
+>Mejor rendimiento y compatibilidad.
 
 **Patrón Repository**
 
-Desacopla acceso a datos y facilita pruebas.
+>Desacopla acceso a datos y facilita pruebas.
 
 **Patrón Service**
 
-Lógica de negocio separada y reutilizable.
+>Lógica de negocio separada y reutilizable.
 
 **AutoMapper**
 
-Conversión automática entre entidades y DTOs.
+>Conversión automática entre entidades y DTOs.
 
 **Entity Framework Core**
 
-Simplifica interacciones con MySQL.
+>Simplifica interacciones con MySQL.
 
 **Inyección de Dependencias**
 
-Gestión centralizada de dependencias.
+>Gestión centralizada de dependencias.
 
