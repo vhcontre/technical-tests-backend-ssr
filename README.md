@@ -1,17 +1,14 @@
 ### Tecnologías y Patrones Aplicados en el Proyecto
 
 ```markdown
-## .NET 6+
-El proyecto está desarrollado utilizando **.NET 6+**, una versión de **LTS (Long-Term Support)** que ofrece:
+## NET 9 - WebApi
+El proyecto se desarrolló utilizando **NET 9**, una versión de **LTS (Long-Term Support)** que ofrece:
 - **Alto rendimiento** y menor consumo de recursos.
-- **Menos código boilerplate** con el nuevo modelo de aplicaciones minimalistas.
 - **Soporte mejorado para contenedores** y despliegue en la nube.
+- **http://localhost:5156/swagger/index.html
 
 ## Patrón Repository
 El **Patrón Repository** se implementa para **separar la lógica de acceso a datos** de la lógica de negocio.  
-Esto ofrece:
-- **Abstracción de la capa de datos**, evitando acoplamientos innecesarios.
-- **Facilidad de prueba (Unit Testing)** al permitir el uso de mocks o repositorios en memoria.
 
 ### Ejemplo de `IProductoRepository.cs`
 
@@ -70,10 +67,6 @@ public class ProductoRepository : IProductoRepository
 ### Patrón Service
 
 El **Patrón Service** encapsula la lógica de negocio en **una capa intermedia** entre los controladores y los repositorios.  
-Beneficios:
-
--   **Separa la lógica de negocio** de los controladores.
--   **Facilita la reutilización** y el mantenimiento del código.
 
 ### Implementación en `ProductoService.cs`
 
@@ -128,7 +121,7 @@ public class AutoMapperProfile : Profile
 
 ### Entity Framework Core (Base de datos: MySQL)
 
-Se usa **Entity Framework Core** como ORM para interactuar con la base de datos **MySQL**.
+Se usó **Entity Framework Core** como ORM para interactuar con la base de datos **MySQL**.
 
 ### Instalación:
 
@@ -192,6 +185,7 @@ Tecnología/Patrón
 **.NET 6+**
 
 >Mejor rendimiento y compatibilidad.
+>
 >http://localhost:5156/swagger/index.html
 
 **Patrón Repository**
