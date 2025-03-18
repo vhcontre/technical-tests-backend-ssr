@@ -6,9 +6,19 @@ using Microsoft.OpenApi.Models;
 using technical_tests_backend_ssr.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
+
+
 builder.Services.AddControllers();
 builder.Services.AddFluentValidationAutoValidation().AddFluentValidationClientsideAdapters();
 builder.Services.AddValidatorsFromAssemblyContaining<ProductoDTOValidator>();
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll",
+        policy => policy.AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader());
+});
 
 builder.Services.AddEndpointsApiExplorer();
 
@@ -57,6 +67,7 @@ if (app.Environment.IsDevelopment())
     });
 }
 
+app.UseCors("AllowAll");
 app.UseAuthorization();
 app.MapControllers();
 

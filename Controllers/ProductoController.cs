@@ -6,7 +6,7 @@ using technical_tests_backend_ssr.Models;
 /// <summary>
 /// 
 /// </summary>
-[Route("[controller]")]
+[Route("api/[controller]")]
 [ApiController]
 public class ProductoController : ControllerBase
 {
@@ -68,20 +68,25 @@ public class ProductoController : ControllerBase
         return CreatedAtAction(nameof(GetById), new { id = newProduct.Id }, _mapper.Map<ProductoDTO>(newProduct));
     }
 
-    /// <summary>
-    /// Actualizar un producto.
-    /// </summary>
-    /// <param name="id"></param>
-    /// <param name="ProductoDTO"></param>
-    /// <returns></returns>
     [HttpPut("{id}")]
-    public async Task<IActionResult> Update(int id, ProductoDTO ProductoDTO)
+    public async Task<ActionResult<ProductoDTO>> Update(int id, [FromBody] ProductoDTO productoDTO)
     {
-        if (id != ProductoDTO.Id) return BadRequest();
-        var product = _mapper.Map<Producto>(ProductoDTO);
-        var updatedProduct = await _productService.UpdateProductAsync(product);
-        if (updatedProduct == null) return NotFound();
-        return NoContent();
+        //if (id != productoDTO.Id)
+        //{
+        //    return BadRequest("El ID del producto no coincide con el de la URL.");
+        //}
+
+        var product = await _productService.GetProductByIdAsync(id);
+        if (product == null)
+        {
+            return NotFound($"No se encontró el producto con ID {id}.");
+        }
+
+        _mapper.Map(productoDTO, product);
+        await _productService.UpdateProductAsync(product);
+
+        var updatedProductDTO = _mapper.Map<ProductoDTO>(product);
+        return Ok(updatedProductDTO); // Retornar el producto actualizado
     }
 
     /// <summary>

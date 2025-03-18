@@ -26,11 +26,8 @@ public class ProductService
         return producto;
     }
 
-    public async Task<Producto?> UpdateProductAsync(Producto producto)
+    public async Task<Producto> UpdateProductAsync(Producto producto)
     {
-        var existingProduct = await _productoRepository.GetByIdAsync(producto.Id);
-        if (existingProduct == null) return null;
-
         await _productoRepository.UpdateAsync(producto);
         return producto;
     }
